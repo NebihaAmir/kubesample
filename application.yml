@@ -1,0 +1,23 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: kubesample-argo-application
+  namespace: agrocd-kubesample
+spec:
+  project: default
+
+  source:
+    repoURL: https://github.com/NebihaAmir/kubesample.git
+    targetRevision: HEAD
+    path: kubesample
+  destination: 
+    server: https://kubernetes.default.svc
+    namespace: kubesample-ns
+
+  syncPolicy:
+    syncOptions:
+    - CreateNamespace=true
+
+    automated:
+      selfHeal: true
+      prune: true
