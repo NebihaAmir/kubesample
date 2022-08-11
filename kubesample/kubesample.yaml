@@ -118,7 +118,7 @@ spec:
     matchLabels:
       app: kubesample
       tier: frontend
-  replicas: 3
+  replicas: 6
   template:
     metadata:
       labels:
